@@ -75,7 +75,18 @@ JSON
   ]
 }
 
+---
 
+## ⚙️ Configuration
+The network topology is defined in `config/scenario-basic.json`.
+* **DNS:** Maps hostnames (e.g., `google.com`) to IP addresses.
+* **Firewall:** Defined rules for `ALLOW` or `DENY` based on IP/Protocol.
+* **Routes:** Defines subnets and gateways using CIDR notation.
+
+## 📂 Project Structure
+* `main.py`: The FastAPI server and entry point.
+* `src/components.py`: Contains the logic for DNS, Router, and Firewall classes.
+* `config/`: Contains the JSON network scenarios.
 
 
 
