@@ -1,4 +1,3 @@
-
 # Network Packet Simulator
 
 A professional API tool that simulates network packet flow through a virtual environment. It demonstrates core networking concepts including DNS resolution, Firewall rules, and Routing logic.
@@ -10,8 +9,11 @@ A professional API tool that simulates network packet flow through a virtual env
    ```bash
    pip install -r requirements.txt
 2. Start the Server Launch the API with:
-   '''bash
-   uvicorn main:app --reload
+
+uvicorn main:app --reload
+
+The server runs at: http://127.0.0.1:8000
+Interactive Docs: http://127.0.0.1:8000/docs
    
 ***API Documentation***
 
@@ -19,19 +21,20 @@ Endpoint: POST /trace
 This is the main endpoint. It accepts a JSON packet definition and returns a hop-by-hop trace of the packet's path.
 ***Request Parameters (JSON)***
 
-Field            	Type        	Description
+| Field | Type | Description |
 ---
 src_ip           	string      	The IP address sending the packet (e.g., "192.168.1.50")
 destination     	string	      Target Hostname (e.g., "https://www.google.com/url?sa=E&source=gmail&q=google.com") or IP address
 dest_port       	integer      	Target Port (e.g., 80, 443)
-protocol	        string	      Network Protocol (e.g., "TCP", "UDP")
+protocol	         string	      Network Protocol (e.g., "TCP", "UDP")
 initial_ttl     	integer	      Time-To-Live hop limit (e.g., 64)
+---
 
-***Example 1: Successful Trace***
+##Example 1: Successful Trace
 This simulates a packet that is allowed by the firewall and finds a route to the destination.
 
 Request:
-'''
+```
 JSON
 {
   "src_ip": "192.168.1.50",
@@ -40,9 +43,9 @@ JSON
   "protocol": "TCP",
   "initial_ttl": 64
 }
-'''
+```
 Response:
-'''
+```
 JSON
 {
   "status": "success",
@@ -53,13 +56,13 @@ JSON
     "TTL Decremented"
   ]
 }
-'''
+```
 ---
-***Example 2: Blocked Traffic (Firewall)***
+##Example 2: Blocked Traffic (Firewall)
 This simulates a packet from a restricted IP (10.0.0.5) trying to access port 80.
 
 Request:
-'''
+```
 JSON
 {
   "src_ip": "10.0.0.5",
@@ -68,9 +71,9 @@ JSON
   "protocol": "TCP",
   "initial_ttl": 64
 }
-'''
+```
 Response:
-'''
+```
 JSON
 {
   "status": "blocked",
@@ -79,7 +82,7 @@ JSON
     "Firewall Blocked"
   ]
 }
-'''
+```
 
 ---
 
@@ -93,6 +96,7 @@ The network topology is defined in `config/scenario-basic.json`.
 * `main.py`: The FastAPI server and entry point.
 * `src/components.py`: Contains the logic for DNS, Router, and Firewall classes.
 * `config/`: Contains the JSON network scenarios.
+
 
 
 
