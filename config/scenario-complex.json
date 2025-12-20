@@ -1,0 +1,50 @@
+{
+  "dns_records": {
+    "google.com": "8.8.8.8",
+    "example.com": "93.184.216.34",
+    "university.edu": "172.16.0.50",
+    "secure-bank.com": "10.0.0.99"
+  },
+  "firewall_rules": [
+    {
+      "src_ip": "10.0.0.5",
+      "dest_port": 80,
+      "protocol": "TCP",
+      "action": "DENY"
+    },
+    {
+      "src_ip": "192.168.1.200",
+      "dest_port": 22,
+      "protocol": "TCP",
+      "action": "DENY"
+    },
+    {
+      "src_ip": "ANY",
+      "dest_port": 443,
+      "protocol": "UDP",
+      "action": "DENY"
+    }
+  ],
+  "routes": [
+    {
+      "cidr": "192.168.1.0/24",
+      "gateway": "192.168.1.1",
+      "interface": "eth0"
+    },
+    {
+      "cidr": "172.16.0.0/16",
+      "gateway": "172.16.0.1",
+      "interface": "eth1"
+    },
+    {
+      "cidr": "10.0.0.0/8",
+      "gateway": "10.0.0.1",
+      "interface": "eth2"
+    },
+    {
+      "cidr": "0.0.0.0/0",
+      "gateway": "10.0.0.254",
+      "interface": "wan0"
+    }
+  ]
+}
