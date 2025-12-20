@@ -9,9 +9,9 @@ A professional API tool that simulates network packet flow through a virtual env
    ```bash
    pip install -r requirements.txt
 2. Start the Server Launch the API with:
-
+```
 uvicorn main:app --reload
-
+```
 The server runs at: http://127.0.0.1:8000
 Interactive Docs: http://127.0.0.1:8000/docs
    
@@ -97,6 +97,7 @@ The network topology is defined in `config/scenario-basic.json`.
 * `main.py`: The FastAPI server and entry point.
 * `src/components.py`: Contains the logic for DNS, Router, and Firewall classes.
 * `config/`: Contains the JSON network scenarios.
+
 
 
 
